@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b0d17;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container { padding: 20px; }
+
+        h1 { font-size: 2.5rem; color: #ffd700; text-shadow: 0 0 10px #ffae00; }
+
+        #countdown {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .time-box span { display: block; font-size: 1.5rem; font-weight: bold; }
+
+        .message-btn {
+            background: #ffd700;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .message-btn:hover { transform: scale(1.1); }
+
+        #hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px dashed #ffd700;
+            border-radius: 15px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="title">Countdown to 2026 with You ❤️</h1>
+        
+        <div id="countdown">
+            <div class="time-box"><span id="days">00</span>Days</div>
+            <div class="time-box"><span id="hours">00</span>Hrs</div>
+            <div class="time-box"><span id="mins">00</span>Mins</div>
+            <div class="time-box"><span id="secs">00</span>Secs</div>
+        </div>
+
+        <button class="message-btn" onclick="revealMessage()">Click for a 2026 Surprise</button>
+        
+        <div id="hidden-message">
+            <h3>Happy New Year!</h3>
+            <p>Our foundation is stronger than any structure I've studied at NIT Hamirpur. 😉</p>
+            <p>I can't wait to build more memories with you in 2026. I love you!</p>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Jan 1, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("title").innerHTML = "HAPPY NEW YEAR 2026!";
+                document.getElementById("countdown").style.display = "none";
+            }
+        }, 1000);
+
+        function revealMessage() {
+            document.getElementById("hidden-message").style.display = "block";
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
+</body>
+</html>
